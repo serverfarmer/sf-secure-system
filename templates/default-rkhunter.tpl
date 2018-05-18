@@ -14,7 +14,7 @@ CRON_DB_UPDATE="yes"
 DB_UPDATE_EMAIL="yes"
 
 # Set this to the email address where reports and run output should be sent
-REPORT_EMAIL="rkhunter@tomaszklim.pl"
+REPORT_EMAIL="rkhunter@%%domain%%"
 
 # Set this to yes to enable automatic database updates
 APT_AUTOGEN="yes"
