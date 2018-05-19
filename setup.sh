@@ -18,6 +18,10 @@ templates=/opt/farm/ext/secure-system/templates
 if [ -f /etc/default/debsums ]; then
 	echo "setting up debsums configuration"
 	install_copy $templates/default-debsums.tpl /etc/default/debsums
+
+	if [ ! -s /etc/debsums-ignore ]; then
+		echo "/usr/share/locale/pl/LC_MESSAGES/mc.mo" >>/etc/debsums-ignore
+	fi
 fi
 
 if [ -f /etc/default/rkhunter ]; then
