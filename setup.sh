@@ -36,7 +36,6 @@ if [ -f /etc/default/rkhunter ]; then
 
 	echo "# This configuration file is maintained by Server Farmer.
 
-MAIL-ON-WARNING=rkhunter@$domain
 COPY_LOG_ON_ERROR=1
 ALLOW_SSH_ROOT_USER=without-password
 ALLOW_SSH_PROT_V1=0
