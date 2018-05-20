@@ -42,6 +42,7 @@ ALLOW_SSH_PROT_V1=0
 DISABLE_TESTS=deleted_files packet_cap_apps
 ALLOW_SYSLOG_REMOTE_LOGGING=1
 SYSLOG_CONFIG_FILE=$syslogcf
+WEB_CMD=/usr/bin/curl
 " >/etc/rkhunter.conf.local
 fi
 
