@@ -12,7 +12,6 @@ if [ "$OSTYPE" != "debian" ]; then
 	exit 0
 fi
 
-domain=`external_domain`
 templates=/opt/farm/ext/secure-system/templates
 
 if [ -f /etc/default/debsums ]; then
@@ -25,25 +24,14 @@ if [ -f /etc/default/debsums ]; then
 fi
 
 if [ -f /etc/default/rkhunter ]; then
+	domain=`external_domain`
+
 	echo "setting up rkhunter configuration"
 	cat $templates/default-rkhunter.tpl |sed s/%%domain%%/$domain/g >/etc/default/rkhunter
+	/opt/farm/ext/secure-system/config-rkhunter.sh >/etc/rkhunter.conf.local
 
-	if [ -f /etc/systemd/journald.conf ]; then
-		syslogcf="/etc/rsyslog.conf /etc/systemd/journald.conf"
-	else
-		syslogcf="/etc/rsyslog.conf"
-	fi
-
-	echo "# This configuration file is maintained by Server Farmer.
-
-COPY_LOG_ON_ERROR=1
-ALLOW_SSH_ROOT_USER=without-password
-ALLOW_SSH_PROT_V1=0
-DISABLE_TESTS=deleted_files packet_cap_apps
-ALLOW_SYSLOG_REMOTE_LOGGING=1
-SYSLOG_CONFIG_FILE=$syslogcf
-WEB_CMD=/usr/bin/curl
-" >/etc/rkhunter.conf.local
+	save_original_config /etc/rkhunter.conf
+	sed -i -e "/^DISABLE_TESTS/d" /etc/rkhunter.conf
 fi
 
 
