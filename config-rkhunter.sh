@@ -30,6 +30,8 @@ ALLOWHIDDENDIR=/dev/.udev
 ALLOWHIDDENFILE=/dev/.blkid.tab
 ALLOWHIDDENFILE=/dev/.blkid.tab.old
 ALLOWHIDDENFILE=/dev/.initramfs
+ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
+ALLOWDEVFILE=/dev/shm/PostgreSQL.*
 "
 
 if [ -f /usr/bin/unhide.rb ]; then
