@@ -34,6 +34,10 @@ ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
 ALLOWDEVFILE=/dev/shm/PostgreSQL.*
 "
 
+for D in `ls -d /tmp/hsperfdata_*`; do
+	echo "ALLOWHIDDENDIR=$D"
+done
+
 if [ -f /usr/bin/unhide.rb ]; then
 	echo "SCRIPTWHITELIST=/usr/bin/unhide.rb"
 fi
