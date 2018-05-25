@@ -34,7 +34,7 @@ ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
 ALLOWDEVFILE=/dev/shm/PostgreSQL.*
 "
 
-for D in `ls -d /tmp/hsperfdata_*`; do
+for D in `ls -d /tmp/hsperfdata_* 2>/dev/null`; do
 	echo "ALLOWHIDDENDIR=$D"
 done
 
