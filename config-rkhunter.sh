@@ -3,9 +3,13 @@
 
 
 if [ "$HWTYPE" = "container" ] || [ "$HWTYPE" = "lxc" ]; then
-	disabletests="deleted_files packet_cap_apps hidden_procs os_specific"
+	disabletests="deleted_files packet_cap_apps hidden_procs os_specific suspscan"
 else
 	disabletests="deleted_files packet_cap_apps"
+fi
+
+if ! grep -qFx $OSVER /opt/farm/ext/secure-system/config/apps.conf; then
+	disabletests="$disabletests apps"
 fi
 
 if [ -f /etc/systemd/journald.conf ]; then
@@ -33,10 +37,6 @@ ALLOWHIDDENFILE=/dev/.initramfs
 ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
 ALLOWDEVFILE=/dev/shm/PostgreSQL.*
 "
-
-for D in `ls -d /tmp/hsperfdata_* 2>/dev/null`; do
-	echo "ALLOWHIDDENDIR=$D"
-done
 
 if [ -f /usr/bin/unhide.rb ]; then
 	echo "SCRIPTWHITELIST=/usr/bin/unhide.rb"
