@@ -2,10 +2,10 @@
 . /opt/farm/scripts/init
 
 
+disabletests="deleted_files packet_cap_apps suspscan"
+
 if [ "$HWTYPE" = "container" ] || [ "$HWTYPE" = "lxc" ]; then
-	disabletests="deleted_files packet_cap_apps hidden_procs os_specific suspscan"
-else
-	disabletests="deleted_files packet_cap_apps"
+	disabletests="$disabletests hidden_procs os_specific"
 fi
 
 if ! grep -qFx $OSVER /opt/farm/ext/secure-system/config/apps.conf; then

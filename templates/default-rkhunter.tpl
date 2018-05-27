@@ -11,7 +11,7 @@ CRON_DAILY_RUN="yes"
 CRON_DB_UPDATE="yes"
 
 # Set this to yes to enable reports of weekly database updates
-DB_UPDATE_EMAIL="yes"
+DB_UPDATE_EMAIL="false"
 
 # Set this to the email address where reports and run output should be sent
 REPORT_EMAIL="rkhunter@%%domain%%"
