@@ -38,6 +38,11 @@ if [ -f /etc/default/rkhunter ]; then
 	fi
 fi
 
+if [ ! -f /etc/X11/xinit/xinitrc ]; then
+	echo "enforcing that snapd is not installed in server mode"
+	/opt/farm/ext/repos/utils/uninstall.sh snapd
+fi
+
 
 if [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
 	gid="`getent group newrelic |cut -d: -f3`"
