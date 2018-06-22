@@ -4,7 +4,7 @@
 . /opt/farm/scripts/functions.install
 
 
-/opt/farm/ext/repos/install.sh security
+/opt/farm/ext/farm-roles/install.sh security
 
 
 if [ "$OSTYPE" != "debian" ]; then
@@ -40,7 +40,7 @@ fi
 
 if [ ! -f /etc/X11/xinit/xinitrc ]; then
 	echo "enforcing that snapd is not installed in server mode"
-	/opt/farm/ext/repos/utils/uninstall.sh snapd
+	/opt/farm/ext/packages/utils/uninstall.sh snapd
 fi
 
 
