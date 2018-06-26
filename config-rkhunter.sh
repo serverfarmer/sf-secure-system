@@ -38,6 +38,10 @@ ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
 ALLOWDEVFILE=/dev/shm/PostgreSQL.*
 "
 
+if [ -x /usr/bin/lwp-request ]; then
+	echo "SCRIPTWHITELIST=/usr/bin/lwp-request"
+fi
+
 if [ -f /usr/bin/unhide.rb ]; then
 	echo "SCRIPTWHITELIST=/usr/bin/unhide.rb"
 fi

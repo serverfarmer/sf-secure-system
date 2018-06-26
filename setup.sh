@@ -32,10 +32,7 @@ if [ -f /etc/default/rkhunter ]; then
 
 	save_original_config /etc/rkhunter.conf
 	sed -i -e "/^DISABLE_TESTS/d" /etc/rkhunter.conf
-
-	if [ ! -x /usr/bin/lwp-request ]; then
-		sed -i -e "/^SCRIPTWHITELIST=\/usr\/bin\/lwp-request/d" /etc/rkhunter.conf
-	fi
+	sed -i -e "/^SCRIPTWHITELIST=\/usr\/bin\/lwp-request/d" /etc/rkhunter.conf
 fi
 
 if [ ! -f /etc/X11/xinit/xinitrc ]; then
