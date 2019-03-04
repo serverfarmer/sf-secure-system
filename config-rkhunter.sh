@@ -36,7 +36,12 @@ ALLOWHIDDENFILE=/dev/.blkid.tab.old
 ALLOWHIDDENFILE=/dev/.initramfs
 ALLOWDEVFILE=/dev/.udev/rules.d/root.rules
 ALLOWDEVFILE=/dev/shm/PostgreSQL.*
+ALLOWDEVFILE=/dev/shm/spice.*
 "
+
+if [ -f /etc/X11/xinit/xinitrc ]; then
+	echo "ALLOWDEVFILE=/dev/shm/mono.*"
+fi
 
 if [ -x /usr/bin/lwp-request ]; then
 	echo "SCRIPTWHITELIST=/usr/bin/lwp-request"
