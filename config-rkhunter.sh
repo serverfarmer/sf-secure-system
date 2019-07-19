@@ -51,6 +51,12 @@ if [ -f /usr/bin/unhide.rb ]; then
 	echo "SCRIPTWHITELIST=/usr/bin/unhide.rb"
 fi
 
+if [ "$OSVER" = "debian-buster" ]; then
+	echo "SCRIPTWHITELIST=/usr/bin/egrep"
+	echo "SCRIPTWHITELIST=/usr/bin/fgrep"
+	echo "SCRIPTWHITELIST=/usr/bin/which"
+fi
+
 if [ -f /usr/lib/arm-linux-gnueabihf/libarmmem.so ]; then
 	echo "SHARED_LIB_WHITELIST=/usr/lib/arm-linux-gnueabihf/libarmmem.so"
 fi
