@@ -52,9 +52,9 @@ if [ -f /usr/bin/unhide.rb ]; then
 fi
 
 if [ "$OSVER" = "debian-buster" ]; then
-	echo "SCRIPTWHITELIST=/usr/bin/egrep"
-	echo "SCRIPTWHITELIST=/usr/bin/fgrep"
 	echo "SCRIPTWHITELIST=/usr/bin/which"
+	if [ -x /usr/bin/egrep ]; then echo "SCRIPTWHITELIST=/usr/bin/egrep"; fi
+	if [ -x /usr/bin/fgrep ]; then echo "SCRIPTWHITELIST=/usr/bin/fgrep"; fi
 fi
 
 if [ -f /usr/lib/arm-linux-gnueabihf/libarmmem.so ]; then
