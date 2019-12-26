@@ -61,6 +61,10 @@ if [ -f /usr/lib/arm-linux-gnueabihf/libarmmem.so ]; then
 	echo "SHARED_LIB_WHITELIST=/usr/lib/arm-linux-gnueabihf/libarmmem.so"
 fi
 
+if [ -f /usr/lib/arm-linux-gnueabihf/libarmmem-aarch64.so ]; then
+	echo "SHARED_LIB_WHITELIST=/usr/lib/arm-linux-gnueabihf/libarmmem-aarch64.so"
+fi
+
 if [ -x /usr/bin/curl ]; then
 	echo "WEB_CMD=/usr/bin/curl"
 elif [ -x /usr/bin/wget ]; then
