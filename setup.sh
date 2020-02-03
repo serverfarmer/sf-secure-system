@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 . /opt/farm/scripts/init
-. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -24,7 +23,7 @@ if [ -f /etc/default/debsums ]; then
 fi
 
 if [ -f /etc/default/rkhunter ]; then
-	domain=`external_domain`
+	domain=`/opt/farm/config/get-external-domain.sh`
 
 	echo "setting up rkhunter configuration"
 	cat $templates/default-rkhunter.tpl |sed s/%%domain%%/$domain/g >/etc/default/rkhunter
